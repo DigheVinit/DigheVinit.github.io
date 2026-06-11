@@ -1,34 +1,27 @@
 # DigheVinit.github.io
 
-Personal website for Dr. Vinit V. Dighe, designed for GitHub Pages.
+Personal GitHub Pages website for Dr. Vinit V. Dighe.
 
-## How to publish
+## Files
 
-1. Create a GitHub repository named exactly:
+- `index.html` — main website content
+- `styles.css` — visual styling
+- `assets/profile.jpg` — optional profile photo
+- `assets/photos/` — optional photography and sport photos
 
-   `DigheVinit.github.io`
+## Suggested photo filenames
 
-2. Upload these files to the root of the repository:
+Upload photos with these exact names if you want the placeholders to work automatically:
 
-   - `index.html`
-   - `styles.css`
-   - `assets/`
-   - `README.md`
+- `assets/profile.jpg`
+- `assets/photos/sport-1.jpg`
+- `assets/photos/sport-2.jpg`
+- `assets/photos/sport-3.jpg`
+- `assets/photos/photo-1.jpg`
+- `assets/photos/photo-2.jpg`
+- `assets/photos/photo-3.jpg`
+- `assets/photos/photo-4.jpg`
 
-3. Go to repository **Settings > Pages**.
-4. Under **Build and deployment**, choose:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/root`
-5. Your site will be available at:
+## Editing
 
-   `https://DigheVinit.github.io`
-
-## Things to customize
-
-- Replace placeholder text with your final biography.
-- Add your real LinkedIn and Google Scholar links.
-- Add your CV PDF and update the CV link.
-- Add your profile photo as `assets/profile.jpg`.
-- Add photography images under `assets/photos/`.
-- Replace `https://example.com` in `index.html` with your Stripe, PayPal, Ko-fi, or other payment link.
+Edit `index.html` for text and links. Edit `styles.css` for colours, spacing, fonts, and layout.
