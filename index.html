@@ -15,17 +15,6 @@
 
   <title>Vinit Dighe</title>
   <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    .keyword-map .keyword,
-    .keyword-map .keyword.large {
-      font-weight: 400 !important;
-    }
-
-    .photo-slot span {
-      display: none !important;
-    }
-  </style>
 </head>
 
 <body>
@@ -288,12 +277,24 @@
         </p>
       </div>
 
-      <div class="gallery">
-        <div class="photo-card photo-slot" style="background-image: url('assets/photos/photo-1.jpg');"></div>
-        <div class="photo-card photo-slot" style="background-image: url('assets/photos/photo-2.jpg');"></div>
-        <div class="photo-card photo-slot" style="background-image: url('assets/photos/photo-3.jpg');"></div>
-        <div class="photo-card photo-slot" style="background-image: url('assets/photos/photo-4.jpg');"></div>
-        <div class="photo-card photo-slot" style="background-image: url('assets/photos/photo-5.jpg');"></div>
+      <div class="photo-carousel">
+        <button class="carousel-btn" onclick="moveCarousel(-1)" aria-label="Previous photo">‹</button>
+
+        <div class="carousel-window" id="carouselWindow">
+          <div class="carousel-track" id="carouselTrack">
+            <img src="assets/photos/photo-1.jpg" alt="Photography by Vinit Dighe" onclick="openLightbox(this.src)">
+            <img src="assets/photos/photo-2.jpg" alt="Photography by Vinit Dighe" onclick="openLightbox(this.src)">
+            <img src="assets/photos/photo-3.jpg" alt="Photography by Vinit Dighe" onclick="openLightbox(this.src)">
+            <img src="assets/photos/photo-4.jpg" alt="Photography by Vinit Dighe" onclick="openLightbox(this.src)">
+            <img src="assets/photos/photo-5.jpg" alt="Photography by Vinit Dighe" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+
+        <button class="carousel-btn" onclick="moveCarousel(1)" aria-label="Next photo">›</button>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="button secondary" onclick="toggleCarousel()" id="toggleCarouselBtn">Pause movement</button>
       </div>
     </section>
 
@@ -314,8 +315,79 @@
     <p>© <span id="year"></span> Vinit Dighe.</p>
   </footer>
 
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImage" src="" alt="Expanded photography" onclick="event.stopPropagation()">
+  </div>
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const carouselWindow = document.getElementById("carouselWindow");
+    const carouselTrack = document.getElementById("carouselTrack");
+    const toggleCarouselBtn = document.getElementById("toggleCarouselBtn");
+
+    let carouselPaused = false;
+
+    function getScrollAmount() {
+      const firstImage = carouselTrack.querySelector("img");
+      const gap = 16;
+      return firstImage.offsetWidth + gap;
+    }
+
+    function moveCarousel(direction) {
+      const scrollAmount = getScrollAmount();
+
+      if (direction > 0) {
+        const nearEnd = carouselWindow.scrollLeft + carouselWindow.clientWidth >= carouselWindow.scrollWidth - 10;
+
+        if (nearEnd) {
+          carouselWindow.scrollTo({
+            left: 0,
+            behavior: "smooth"
+          });
+        } else {
+          carouselWindow.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth"
+          });
+        }
+      } else {
+        if (carouselWindow.scrollLeft <= 10) {
+          carouselWindow.scrollTo({
+            left: carouselWindow.scrollWidth,
+            behavior: "smooth"
+          });
+        } else {
+          carouselWindow.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth"
+          });
+        }
+      }
+    }
+
+    function toggleCarousel() {
+      carouselPaused = !carouselPaused;
+      toggleCarouselBtn.textContent = carouselPaused ? "Resume movement" : "Pause movement";
+    }
+
+    setInterval(() => {
+      if (!carouselPaused) {
+        moveCarousel(1);
+      }
+    }, 3000);
+
+    function openLightbox(src) {
+      document.getElementById("lightboxImage").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+      document.body.style.overflow = "auto";
+    }
   </script>
 </body>
 </html>
