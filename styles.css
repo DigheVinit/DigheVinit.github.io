@@ -463,3 +463,13 @@ main {
     height: 165px;
   }
 }
+
+/* Keep Outside of work / sports images uncropped */
+#outside .photo-card {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f7f5f0;
+}
+
+
