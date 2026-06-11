@@ -472,4 +472,17 @@ main {
   background-color: #f7f5f0;
 }
 
+/* Outside of work sports images: show full image without cropping */
+#outside .gallery.three {
+  align-items: center;
+}
+
+#outside .photo-card {
+  background-size: contain !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-color: #f7f5f0 !important;
+  box-shadow: none;
+}
+
 
