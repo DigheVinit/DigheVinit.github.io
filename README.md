@@ -21,3 +21,5 @@ Replace these placeholders with your own files:
 - `assets/photos/photo-1.jpg`
 - `assets/photos/photo-2.jpg`
 - `assets/photos/photo-3.jpg`
+- `assets/photos/photo-4.jpg`
+- `assets/photos/photo-5.jpg`
