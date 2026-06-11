@@ -400,3 +400,24 @@ h3 {
 .contact-card a:hover {
   border-bottom-color: var(--accent-dark);
 }
+
+/* Remove haze/overlay from photos */
+.photo-slot::before,
+.photo-slot::after {
+  display: none !important;
+  content: none !important;
+}
+
+.photo-slot {
+  opacity: 1 !important;
+  filter: none !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile-photo,
+.photo-card {
+  opacity: 1 !important;
+  filter: none !important;
+}
